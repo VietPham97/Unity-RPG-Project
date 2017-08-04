@@ -3,20 +3,27 @@
 public class Interactable : MonoBehaviour 
 {
     public float radius = 3f; // how close player need to be to interact with the object
+    public Transform interactionTransform;
 
     bool isFocus;
     Transform player;
 
     bool hasInteracted;
 
+    public virtual void Interact()
+    {
+		// This method is meant to be overwritten
+        Debug.Log("Interacting with " + transform.name);
+    }
+
     private void Update()
     {
         if (isFocus && !hasInteracted)
         {
-            var distance = Vector3.Distance(player.position, transform.position);
+            var distance = Vector3.Distance(player.position, interactionTransform.position);
             if (distance <= radius)
             {
-                Debug.Log("INTERACT");
+                Interact();
                 hasInteracted = true;
             }
         }
@@ -39,6 +46,6 @@ public class Interactable : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
 }
