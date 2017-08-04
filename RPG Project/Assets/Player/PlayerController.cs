@@ -3,6 +3,7 @@
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour 
 {
+    public Interactable focus;
     public LayerMask movementMask;
 
     Camera cam;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
             {
                 motor.MoveToPoint(hit.point);
 
-                // TODO Stop focusing any objects
+                RemoveFocus();
             }
         }
 
@@ -38,9 +39,22 @@ public class PlayerController : MonoBehaviour
 			{
 				motor.MoveToPoint(hit.point);
 
-				// TODO Check if hit an interactable
-                // TODO If yes, set as a focus
-			}
+                var interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    SetFocus(interactable);
+                }
+            }
 		}
+    }
+	
+	private void SetFocus(Interactable newFocus)
+	{
+		focus = newFocus;
+	}
+
+    private void RemoveFocus()
+    {
+        focus = null;
     }
 }
