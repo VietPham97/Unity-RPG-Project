@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour 
 {
     public LayerMask movementMask;
+
     Camera cam;
+    PlayerMotor motor;
 
     private void Start()
     {
         cam = Camera.main;
+        motor = GetComponent<PlayerMotor>();
     }
 
     private void Update()
@@ -19,8 +23,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100, movementMask))
             {
-                Debug.Log("We hit " + hit.collider.name + " " + hit.point);
-                // TODO Move player to the hit point
+                motor.MoveToPoint(hit.point);
 
                 // TODO Stop focusing any objects
             }
