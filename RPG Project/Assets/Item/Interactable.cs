@@ -45,6 +45,10 @@ public class Interactable : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        // Get rid of Null Reference Exception
+        if (interactionTransform == null)
+            interactionTransform = transform;
+        
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
