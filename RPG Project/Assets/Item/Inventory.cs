@@ -18,14 +18,24 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
+    public int space = 20;
+
     public List<Item> items = new List<Item>();
 
-    public void Add(Item item)
+    public bool Add(Item item)
     {
         if (!item.isDefaultItem)
         {
-			items.Add(item); // Add function of the List 
+            if (items.Count >= space)
+            {
+                Debug.LogWarning("Not enough room.");
+                return false;
+            }
+
+            items.Add(item); // Add function of the List 
         }
+
+        return true;
     }
 
     public void Remove(Item item)
