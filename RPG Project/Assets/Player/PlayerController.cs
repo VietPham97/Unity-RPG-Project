@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour 
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        // left mouse button
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -30,6 +35,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // right mouse button
 		if (Input.GetMouseButtonDown(1))
 		{
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
