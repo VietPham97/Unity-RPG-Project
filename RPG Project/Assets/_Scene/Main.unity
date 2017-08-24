@@ -3276,6 +3276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsParent: {fileID: 1878619099}
+  inventoryUI: {fileID: 483163889}
 --- !u!1 &760490495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,22 +3944,22 @@ Prefab:
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
@@ -3968,7 +3969,7 @@ Prefab:
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
@@ -3978,7 +3979,7 @@ Prefab:
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
