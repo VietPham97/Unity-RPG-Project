@@ -3180,6 +3180,7 @@ GameObject:
   - component: {fileID: 751062649}
   - component: {fileID: 751062648}
   - component: {fileID: 751062647}
+  - component: {fileID: 751062651}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3263,6 +3264,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &751062651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 751062646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768e25c2c0052426e81f8642850ed7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &760490495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,22 +3942,22 @@ Prefab:
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
@@ -3955,7 +3967,7 @@ Prefab:
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
@@ -3965,7 +3977,7 @@ Prefab:
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224748815492467682, guid: 4921d245f7cb3463e8efbaca567b4ce3,
         type: 2}
