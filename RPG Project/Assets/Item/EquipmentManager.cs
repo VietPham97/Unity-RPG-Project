@@ -40,4 +40,31 @@ public class EquipmentManager : MonoBehaviour
 
         currentEquipment[slotIndex] = newItem; // set the currentEquipment to the newItem
     }
+
+    public void Unequip(int slotIndex)
+    {
+        if (currentEquipment[slotIndex] != null)
+        {
+            var oldItem = currentEquipment[slotIndex];
+            inventory.Add(oldItem);
+
+            currentEquipment[slotIndex] = null;
+        }
+    }
+
+    public void UnequipAll()
+    {
+        for (int i = 0; i < currentEquipment.Length; i++)
+        {
+            Unequip(i);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            UnequipAll();
+        }
+    }
 }
