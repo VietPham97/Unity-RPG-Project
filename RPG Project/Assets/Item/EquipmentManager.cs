@@ -15,7 +15,9 @@ public class EquipmentManager : MonoBehaviour
     }
     #endregion
 
+    public SkinnedMeshRenderer targetMesh; // assign the 'Body' mesh of the Player on Unity Inspector window
     Equipment[] currentEquipment;
+    SkinnedMeshRenderer[] currentMeshes;
     Inventory inventory;
 
     private void Start()
@@ -24,6 +26,7 @@ public class EquipmentManager : MonoBehaviour
 
         var numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length; // Get the length of EquipmentSlot enum
         currentEquipment = new Equipment[numSlots]; // create a new array of type Equipment
+        currentMeshes = new SkinnedMeshRenderer[numSlots];
     }
 
     public void Equip(Equipment newItem)
@@ -39,12 +42,22 @@ public class EquipmentManager : MonoBehaviour
         }
 
         currentEquipment[slotIndex] = newItem; // set the currentEquipment to the newItem
+        SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
+        newMesh.transform.parent = targetMesh.transform;
+
+        newMesh.bones = targetMesh.bones;
+        newMesh.rootBone = targetMesh.rootBone;
+        currentMeshes[slotIndex] = newMesh;
     }
 
     public void Unequip(int slotIndex)
     {
         if (currentEquipment[slotIndex] != null)
         {
+            if (currentMeshes[slotIndex] != null)
+            {
+                Destroy(currentMeshes[slotIndex].gameObject);
+            }
             var oldItem = currentEquipment[slotIndex];
             inventory.Add(oldItem);
 
