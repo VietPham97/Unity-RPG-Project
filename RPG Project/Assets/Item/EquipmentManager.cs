@@ -19,6 +19,10 @@ public class EquipmentManager : MonoBehaviour
     public SkinnedMeshRenderer targetMesh; // assign the 'Body' mesh of the Player on Unity Inspector window
     Equipment[] currentEquipment;
     SkinnedMeshRenderer[] currentMeshes;
+
+    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
+
     Inventory inventory;
 
     private void Start()
@@ -38,6 +42,11 @@ public class EquipmentManager : MonoBehaviour
         var oldItem = Unequip(slotIndex);
 
         SetEquipmentBlendShapes(newItem, 100);
+
+        if (onEquipmentChanged != null)
+        {
+            onEquipmentChanged.Invoke(newItem, oldItem);
+        }
 
         currentEquipment[slotIndex] = newItem; // set the currentEquipment to the newItem
         SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
@@ -62,7 +71,11 @@ public class EquipmentManager : MonoBehaviour
 
             currentEquipment[slotIndex] = null;
 
-            return oldItem;
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(null, oldItem);
+            }
+			return oldItem;
         }
         return null;
     }
