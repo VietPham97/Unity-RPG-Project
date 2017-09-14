@@ -41,6 +41,8 @@ public class EquipmentManager : MonoBehaviour
             inventory.Add(oldItem);
         }
 
+        SetEquipmentBlendShapes(newItem, 100);
+
         currentEquipment[slotIndex] = newItem; // set the currentEquipment to the newItem
         SkinnedMeshRenderer newMesh = Instantiate<SkinnedMeshRenderer>(newItem.mesh);
         newMesh.transform.parent = targetMesh.transform;
@@ -59,6 +61,7 @@ public class EquipmentManager : MonoBehaviour
                 Destroy(currentMeshes[slotIndex].gameObject);
             }
             var oldItem = currentEquipment[slotIndex];
+            SetEquipmentBlendShapes(oldItem, 0);
             inventory.Add(oldItem);
 
             currentEquipment[slotIndex] = null;
@@ -70,6 +73,14 @@ public class EquipmentManager : MonoBehaviour
         for (int i = 0; i < currentEquipment.Length; i++)
         {
             Unequip(i);
+        }
+    }
+
+    void SetEquipmentBlendShapes(Equipment item, int weight)
+    {
+        foreach (var blendShape in item.coveredMeshRegions)
+        {
+            targetMesh.SetBlendShapeWeight((int)blendShape, weight);
         }
     }
 
