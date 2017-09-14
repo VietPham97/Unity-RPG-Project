@@ -15,6 +15,7 @@ public class EquipmentManager : MonoBehaviour
     }
     #endregion
 
+    public Equipment[] defaultItems;
     public SkinnedMeshRenderer targetMesh; // assign the 'Body' mesh of the Player on Unity Inspector window
     Equipment[] currentEquipment;
     SkinnedMeshRenderer[] currentMeshes;
@@ -27,19 +28,14 @@ public class EquipmentManager : MonoBehaviour
         var numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length; // Get the length of EquipmentSlot enum
         currentEquipment = new Equipment[numSlots]; // create a new array of type Equipment
         currentMeshes = new SkinnedMeshRenderer[numSlots];
+
+        EquipDefaultItems();
     }
 
     public void Equip(Equipment newItem)
     {
         int slotIndex = (int)newItem.equipSlot; // get the index of the equiped item or newItem in EquipmentSlot enum
-
-        Equipment oldItem = null;
-
-        if (currentEquipment[slotIndex] != null)
-        {
-            oldItem = currentEquipment[slotIndex];
-            inventory.Add(oldItem);
-        }
+        var oldItem = Unequip(slotIndex);
 
         SetEquipmentBlendShapes(newItem, 100);
 
@@ -52,7 +48,7 @@ public class EquipmentManager : MonoBehaviour
         currentMeshes[slotIndex] = newMesh;
     }
 
-    public void Unequip(int slotIndex)
+    public Equipment Unequip(int slotIndex)
     {
         if (currentEquipment[slotIndex] != null)
         {
@@ -65,7 +61,10 @@ public class EquipmentManager : MonoBehaviour
             inventory.Add(oldItem);
 
             currentEquipment[slotIndex] = null;
+
+            return oldItem;
         }
+        return null;
     }
 
     public void UnequipAll()
@@ -74,6 +73,7 @@ public class EquipmentManager : MonoBehaviour
         {
             Unequip(i);
         }
+        EquipDefaultItems();
     }
 
     void SetEquipmentBlendShapes(Equipment item, int weight)
@@ -81,6 +81,14 @@ public class EquipmentManager : MonoBehaviour
         foreach (var blendShape in item.coveredMeshRegions)
         {
             targetMesh.SetBlendShapeWeight((int)blendShape, weight);
+        }
+    }
+
+    void EquipDefaultItems()
+    {
+        foreach (var item in defaultItems)
+        {
+            Equip(item);
         }
     }
 
