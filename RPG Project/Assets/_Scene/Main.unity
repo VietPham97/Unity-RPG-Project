@@ -5560,6 +5560,8 @@ GameObject:
   - component: {fileID: 1385794470}
   - component: {fileID: 1385794469}
   - component: {fileID: 1385794473}
+  - component: {fileID: 1385794475}
+  - component: {fileID: 1385794474}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -5642,6 +5644,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
+--- !u!114 &1385794474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1385794468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f39d7708e5464800af1ea612c57f11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 40
+  damage:
+    baseValue: 5
+  armor:
+    baseValue: 3
+--- !u!114 &1385794475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1385794468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5513a2f47bc54619b9cb8be6064901f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 4
+  interactionTransform: {fileID: 1385794472}
 --- !u!1 &1404447455
 GameObject:
   m_ObjectHideFlags: 0
