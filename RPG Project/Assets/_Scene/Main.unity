@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -2903,6 +2903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06528b8be9374de8ac0ff4cbda4c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSpeed: 1
 --- !u!1001 &684305082
 Prefab:
   m_ObjectHideFlags: 0
@@ -5697,6 +5698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06528b8be9374de8ac0ff4cbda4c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackSpeed: 1
 --- !u!1 &1404447455
 GameObject:
   m_ObjectHideFlags: 0
